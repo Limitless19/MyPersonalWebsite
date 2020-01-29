@@ -6,7 +6,7 @@
   },
   "hosting": {
     "site": "limitless19",
-    "public": "public",
+    "public": "web",
     "ignore": [
       "firebase.json",
       "**/.*",
