@@ -1,40 +1,58 @@
 import 'package:flutter/material.dart';
+import 'package:mypersonalwebsite/core/util/sizeconfig.dart';
+import 'package:provider/provider.dart';
 
-void main() => runApp(MyApp());
+import 'core/themes/appstate.dart';
+import 'core/themes/apptheme.dart';
+import 'features/home/presentation/pages/my_homepage.dart';
+
+void main() => runApp(ChangeNotifierProvider<AppState>(
+      child: MyApp(),
+      create: (BuildContext context) => AppState(),
+    ));
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+    return Consumer<AppState>(
+      builder: (BuildContext context,AppState appstate,Widget child) {
+        return OrientationBuilder(
+          builder: (BuildContext context,Orientation orientation) {
+            return LayoutBuilder(
+              builder: (BuildContext context,BoxConstraints constraints) {
+                SizeConfig().init(constraints, orientation);
+                return MaterialApp(
+                  title: 'Limitless19 Portfolio',
+                  debugShowCheckedModeBanner: false,
+                  theme: AppTheme.lightTheme, //our own custom Themes.
+                  darkTheme: AppTheme.darkTheme,
+                  themeMode: appstate.isDarkModeOn
+                      ? ThemeMode.dark
+                      : ThemeMode.light, //decider of which theme to use-light or dark.
+                  initialRoute: MyHomePage.id,
+                  routes: {
+                    MyHomePage.id: (context) => MyHomePage(),
+                    'AboutPage': (context) => AboutPage(),
+                  },
+                );
+              }
+            );
+          }
+        );
+      },
     );
   }
 }
 
-class MyHomePage extends StatelessWidget {
-  final String title;
-  const MyHomePage({Key key, this.title}) : super(key: key);
+class AboutPage extends StatelessWidget {
+  const AboutPage({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text('My Personal Website'),
-      ),
       body: Container(
         child: Center(
-          child: Text(
-            title,
-            style: TextStyle(
-              color: Colors.black,
-            ),
-          ),
+          child: Text('About Page'),
         ),
       ),
     );
