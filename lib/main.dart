@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
               builder: (BuildContext context,BoxConstraints constraints) {
                 SizeConfig().init(constraints, orientation);
                 return MaterialApp(
-                  title: 'Limitless19 Portfolio',
+                  title: 'Limitless19 Portfolio website',
                   debugShowCheckedModeBanner: false,
                   theme: AppTheme.lightTheme, //our own custom Themes.
                   darkTheme: AppTheme.darkTheme,
