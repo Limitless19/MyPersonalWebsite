@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mypersonalwebsite/core/constants/colors.dart';
+import 'package:mypersonalwebsite/core/util/sizeconfig.dart';
 
 class HeaderWidget extends StatelessWidget {
   final String title;
@@ -18,16 +20,16 @@ class HeaderWidget extends StatelessWidget {
           Row(
             children: <Widget>[
               Text(title),
-              SizedBox(width: 4),
-              Image.asset(assetname, height: 24, width: 24),
+              SizedBox(width: 1.11 * SizeConfig.widthMultiplier),
+              Image.asset(assetname, height: 3.75 * SizeConfig.heightMultiplier, width: 7.05 * SizeConfig.widthMultiplier),
             ],
           ),
           SizedBox(height: 4),
           Container(
-            height: 5,
-            width: title.length * 10.0,
+            height: 0.78 * SizeConfig.heightMultiplier,
+            width: title.length *  1.56 *SizeConfig.heightMultiplier,
             decoration: BoxDecoration(
-              color: Colors.blueAccent,
+              color:Colours.darkColor,
             ),
           )
         ],

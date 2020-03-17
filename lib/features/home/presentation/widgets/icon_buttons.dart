@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mypersonalwebsite/core/constants/colors.dart';
+import 'package:mypersonalwebsite/core/util/sizeconfig.dart';
 import 'package:mypersonalwebsite/features/home/presentation/pages/my_homepage.dart';
 
 final List<Widget> listIconButtons = [
@@ -93,7 +94,7 @@ class _LinkButtonState extends State<LinkButton>
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+      padding:  EdgeInsets.symmetric(horizontal: 2.22 * SizeConfig.widthMultiplier),
       child: InkWell(
         onHover: (isHovering) {
           setState(() {
@@ -110,6 +111,7 @@ class _LinkButtonState extends State<LinkButton>
           child: Icon(
             widget.iconData,
             color: _animation.value,
+            size: 8.24 * SizeConfig.widthMultiplier,
           ),
         ),
       ),

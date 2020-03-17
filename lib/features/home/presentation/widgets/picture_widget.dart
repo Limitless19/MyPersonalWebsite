@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mypersonalwebsite/core/util/sizeconfig.dart';
 
 class ProfilePicture extends StatefulWidget {
   final String imageUrl;
@@ -7,7 +8,7 @@ class ProfilePicture extends StatefulWidget {
     Key key,
     this.imageUrl =
         'https://firebasestorage.googleapis.com/v0/b/my-personal-website-28fe2.appspot.com/o/limitlessicon.jpg?alt=media&token=f21dea47-ba61-4d3e-9880-63ad44a8c453',
-         this.radius = 120.0,
+        @required this.radius ,
   }) : super(key: key);
 
   @override
@@ -64,8 +65,8 @@ class _ProfilePictureState extends State<ProfilePicture>
         borderRadius: BorderRadius.all(Radius.circular(_controller.value * 80)),
         child: Image.network(
           widget.imageUrl,
-          height: 210,
-          width:  210,
+          height: 32.81 * SizeConfig.heightMultiplier,
+          width:  58.33 * SizeConfig.widthMultiplier,
           fit: BoxFit.fitHeight,
         ),
       ),

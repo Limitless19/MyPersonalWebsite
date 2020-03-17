@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mypersonalwebsite/core/constants/colors.dart';
+import 'package:mypersonalwebsite/core/util/sizeconfig.dart';
 
 class AppBackground extends StatelessWidget {
   const AppBackground({Key key}) : super(key: key);
@@ -8,7 +9,7 @@ class AppBackground extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomPaint(
       child: Container(
-        height: 180.0,
+        height: 29 * SizeConfig.heightMultiplier,
       ),
       painter: MyCurvesPainter(),
     );

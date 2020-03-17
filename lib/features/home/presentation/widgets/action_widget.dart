@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mypersonalwebsite/core/constants/colors.dart';
+import 'package:mypersonalwebsite/core/util/sizeconfig.dart';
 
 class ActionWidget extends StatefulWidget {
   final String text;
@@ -18,7 +19,7 @@ class _ActionWidgetState extends State<ActionWidget>
   @override
   void initState() {
     _controller =
-        AnimationController(vsync: this, duration: Duration(milliseconds: 300));
+        AnimationController(vsync: this, duration: Duration(milliseconds: 400));
 
     _controller.addListener(() {
       setState(() {
@@ -47,16 +48,17 @@ class _ActionWidgetState extends State<ActionWidget>
       splashColor: Colors.transparent,
       onTap: widget.onTapped ?? null,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
+        padding:  EdgeInsets.symmetric(horizontal: 2.22 * SizeConfig.widthMultiplier, vertical: 1.25 * SizeConfig.heightMultiplier),
         child: Column(
           children: <Widget>[
             Text(widget.text,style: TextStyle(
+              fontSize: 2.35 * SizeConfig.heightMultiplier,
               color: Colours.lightestColor,
             )),
-            SizedBox(height: 5),
+            SizedBox(height: 1.5 * SizeConfig.widthMultiplier),
             Container(
-              height: 4,
-              width: _controller.value * 50,
+              height:  0.73 * SizeConfig.heightMultiplier,
+              width: _controller.value * (12.71 * SizeConfig.widthMultiplier),
               decoration: BoxDecoration(color: Colors.white),
             ),
           ],

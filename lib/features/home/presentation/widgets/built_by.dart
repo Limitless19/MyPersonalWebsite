@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mypersonalwebsite/core/util/sizeconfig.dart';
 import 'package:url_launcher/url_launcher.dart' as launcher;
 
 class BuiltByWidget extends StatelessWidget {
@@ -23,7 +24,7 @@ class BuiltByWidget extends StatelessWidget {
                 },
                 child: Text(
                   'Oke Tolulope (@iamLimitless19)',
-                  style: TextStyle(fontSize: 16),
+                  style: TextStyle(fontSize: 2.5 * SizeConfig.heightMultiplier),
                   softWrap: true,
                   textAlign: TextAlign.center,
                 ),
@@ -40,7 +41,7 @@ class BuiltByWidget extends StatelessWidget {
                 'Built with ',
                 textAlign: TextAlign.center,
               ),
-              FlutterLogo(size: 16),
+              FlutterLogo(size: 1.5 * SizeConfig.heightMultiplier),
             ],
           ),
         ),

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:mypersonalwebsite/core/constants/colors.dart';
 import 'package:mypersonalwebsite/core/error/exceptions.dart';
+import 'package:mypersonalwebsite/core/util/sizeconfig.dart';
 import 'package:mypersonalwebsite/features/home/data/models/writing.dart';
 import 'package:url_launcher/url_launcher.dart' as launcher;
 
@@ -22,7 +24,7 @@ class _WritingCardState extends State<WritingCard>
   void initState() {
     _controller = AnimationController(
         vsync: this,
-        duration: Duration(milliseconds: 800),
+        duration: Duration(milliseconds: 300),
         upperBound: 1.0,
         lowerBound: 0.0);
 
@@ -39,11 +41,11 @@ class _WritingCardState extends State<WritingCard>
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 250,
+      height: 39.06 * SizeConfig.heightMultiplier,
       child: Column(
         mainAxisSize: MainAxisSize.max,
         children: <Widget>[
-          SizedBox(height: 12.0 - (_controller.value * 12.0)),
+          SizedBox(height: (1.88 * SizeConfig.heightMultiplier) - (_controller.value * (1.88 * SizeConfig.heightMultiplier))),
           InkWell(
             onTap: () async {
               String url = widget.writing.linkUrl;
@@ -74,21 +76,21 @@ class _WritingCardState extends State<WritingCard>
               });
             },
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              padding:  EdgeInsets.symmetric(horizontal: 2.22 * SizeConfig.widthMultiplier),
               child: Container(
-                width: 250,
+                width: 69.44 * SizeConfig.widthMultiplier,
                 child: Card(
                   clipBehavior: Clip.antiAliasWithSaveLayer,
                   elevation: _controller.value * 8.0,
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0),
+                    borderRadius: BorderRadius.circular(1.56 * SizeConfig.heightMultiplier),
                   ),
                   child: Stack(
                     children: <Widget>[
                       Column(
                         children: <Widget>[
                           Padding(
-                            padding: const EdgeInsets.all(12.0),
+                            padding:  EdgeInsets.all(1.88 * SizeConfig.heightMultiplier),
                             child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: <Widget>[
@@ -96,21 +98,21 @@ class _WritingCardState extends State<WritingCard>
                                     widget.writing.title,
                                     maxLines: 2,
                                     style: TextStyle(
-                                      fontSize: 15,
+                                      fontSize: 2.34 * SizeConfig.heightMultiplier,
                                     ),
                                     overflow: TextOverflow.ellipsis,
                                   ),
                                   Container(
-                                    height: 5,
+                                    height: 0.78 * SizeConfig.heightMultiplier,
                                     width: double.maxFinite,
                                     decoration: BoxDecoration(
-                                      color: Colors.blue,
+                                      color: Colours.darkColor,
                                     ),
                                   ),
                                 ]),
                           ),
                           Container(
-                            height: 130.0,
+                            height: 20.31 * SizeConfig.heightMultiplier,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.all(
                                   Radius.circular(0.0),
@@ -123,9 +125,9 @@ class _WritingCardState extends State<WritingCard>
                           ),
                           Padding(
                             padding:
-                                const EdgeInsets.only(top: 12.0,left:5.0,right:5),
+                                 EdgeInsets.only(top: 1.88 * SizeConfig.heightMultiplier,left:1.39 * SizeConfig.widthMultiplier,right:1.39 * SizeConfig.widthMultiplier),
                             child: Container(
-                              height: 60,
+                              height: 9.38 * SizeConfig.heightMultiplier,
                               child: Text(
                                 widget.writing.shortDescription,
                                 maxLines: 4,
@@ -133,12 +135,12 @@ class _WritingCardState extends State<WritingCard>
                                 softWrap: true,
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
-                                  fontSize: 14
+                                  fontSize: 2.19 * SizeConfig.heightMultiplier
                                 ),
                               ),
                             ),
                           ),
-                          SizedBox(height: 40),
+                          SizedBox(height: 4.50 * SizeConfig.heightMultiplier),
                         ],
                       ),
                       Positioned(

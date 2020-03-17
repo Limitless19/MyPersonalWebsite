@@ -9,3 +9,10 @@ Future<PaletteGenerator> generatePalette(String imagePath) async {
     );
     return _palette;
   }
+
+
+//TODO SELECTCARD COLORS FROM IMAGE PROVIDED
+  hdhf(){
+
+   // PaletteGenerator.fromImageProvider(Image.network(src).image);
+  }

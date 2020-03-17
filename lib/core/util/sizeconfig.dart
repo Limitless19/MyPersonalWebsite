@@ -31,7 +31,14 @@ class SizeConfig{
     imageSizeMultiplier = _blockSizeHorizontal;
     heightMultiplier =_blockSizeVertical;
     widthMultiplier = _blockSizeHorizontal;
+
+  debugPrint('textmultiplier $textMultiplier');
+  debugPrint('imageSizeMultiplier $imageSizeMultiplier');
+  debugPrint('heightMultiplier $heightMultiplier');
+  debugPrint('widthMultiplier $widthMultiplier');
+
   }
+
 
 }
 

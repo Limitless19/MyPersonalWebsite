@@ -1,6 +1,8 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:mypersonalwebsite/features/home/presentation/widgets/limitless_avatar.dart';
+import 'package:mypersonalwebsite/features/home/presentation/widgets/placeholder/placeholder_image_with_text.dart';
 import 'package:palette_generator/palette_generator.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -75,6 +77,10 @@ class _ContentState extends State<Content> with SingleTickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
+
+    generatePalette(Images.limitless_icon)
+        .then((palette) => this.palette = palette);
+
     _controller = AnimationController(
       vsync: this,
       duration: Duration(
@@ -103,9 +109,7 @@ class _ContentState extends State<Content> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    generatePalette(Images.limitless_icon)
-        .then((palette) => this.palette = palette);
-    return CustomScrollView(
+    return  CustomScrollView(
       scrollDirection: Axis.vertical,
       controller: _scrollController,
       slivers: <Widget>[
@@ -114,31 +118,14 @@ class _ContentState extends State<Content> with SingleTickerProviderStateMixin {
             expandedHeight: SizeConfig.heightMultiplier * 10,
             elevation: 0.0,
             backgroundColor: Colors.transparent,
-            leading: Container(
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(50.0),
-                  //color: palette.,
-                  border: Border.all(width: 2.0)),
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(50.0),
-                      border: Border.all(width: 2.0, color: Colors.white)),
-                  child: CircleAvatar(
-                    radius: 40.0,
-                    backgroundImage: Image.asset(Images.limitless_icon).image,
-                  ),
-                ),
-              ),
-            ),
+         //   leading: LimitlessAvatar(),
             actions: <Widget>[
               ActionWidget(
                 text: 'About Me',
                 onTapped: () {
                   Scrollable.ensureVisible(about_me_key.currentContext,
                       duration: Duration(milliseconds: 1000),
-                      curve: Curves.easeInOut);
+                      curve: Curves.easeIn);
                 },
               ),
               ActionWidget(
@@ -146,7 +133,7 @@ class _ContentState extends State<Content> with SingleTickerProviderStateMixin {
                 onTapped: () {
                   Scrollable.ensureVisible(projects_key.currentContext,
                       duration: Duration(milliseconds: 1000),
-                      curve: Curves.easeInOut);
+                      curve: Curves.easeIn);
                 },
               ),
               ActionWidget(
@@ -154,7 +141,7 @@ class _ContentState extends State<Content> with SingleTickerProviderStateMixin {
                 onTapped: () {
                   Scrollable.ensureVisible(writings_key.currentContext,
                       duration: Duration(milliseconds: 1000),
-                      curve: Curves.easeInOut);
+                      curve: Curves.easeIn);
                 },
               ),
             ]),
@@ -165,35 +152,42 @@ class _ContentState extends State<Content> with SingleTickerProviderStateMixin {
               mainAxisSize: MainAxisSize.max,
               children: <Widget>[
                 Text('Hi,I am Limitless!',
-                    style: TextStyle(color: Colours.lightestColor)),
+                    style: TextStyle(color: Colours.lightestColor, fontSize:3.44 *SizeConfig.heightMultiplier)),
                 Padding(
                   padding: EdgeInsets.only(
-                      left: SizeConfig.widthMultiplier * 30, top: 60),
-                  child: RotateAnimatedTextKit(
-                      onTap: () {
-                        print("Tap Event");
-                      },
-                      text: [
-                        'NodeJs',
-                        'Django',
-                        "Android",
-                        "Flutter",
-                      ],
-                      textStyle: TextStyle(
-                          fontSize: 40.0,
-                          fontFamily: "Horizon",
-                          color: Colours.darkestColor),
-                      textAlign: TextAlign.start,
-                      alignment: AlignmentDirectional.topStart),
+                      top: 14 * SizeConfig.heightMultiplier,
+                      bottom: 4 *  SizeConfig.heightMultiplier,
+                      ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      RotateAnimatedTextKit(
+                          onTap: () {
+                            print("Tap Event");
+                          },
+                          text: [
+                            'NodeJs',
+                            'Django',
+                            "Android",
+                            "Flutter",
+                          ],
+                          textStyle: TextStyle(
+                              fontSize: 6.25 * SizeConfig.heightMultiplier,
+                              fontFamily: "Horizon",
+                              color: Colours.darkestColor),
+                          textAlign: TextAlign.center,
+                          alignment: AlignmentDirectional.centerStart),
+                    ],
+                  ),
                 ),
               ],
             ),
             Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: listIconButtons),
-            SizedBox(height: 150),
+            SizedBox(height: 16.44 * SizeConfig.heightMultiplier),
             Padding(
-              padding: EdgeInsets.only(left: 15.0),
+              padding: EdgeInsets.only(left: 4.17 * SizeConfig.widthMultiplier),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
@@ -207,44 +201,40 @@ class _ContentState extends State<Content> with SingleTickerProviderStateMixin {
                       Container(),
                     ],
                   ),
-                  SizedBox(height: 10),
+                  SizedBox(height: 1.56 * SizeConfig.heightMultiplier),
                   Text(Strings.about_me_details),
-                  ProfilePicture(),
+                  ProfilePicture(radius: 18.75 * SizeConfig.heightMultiplier),
                 ],
               ),
             ),
-            SizedBox(height: 150),
+            SizedBox(height: 23.44 * SizeConfig.heightMultiplier),
             Padding(
-              padding: EdgeInsets.only(left: 15.0),
+              padding: EdgeInsets.only(left: 4.17 * SizeConfig.widthMultiplier),
               child: HeaderWidget(
                 key: projects_key,
                 title: 'Open Source Projects',
                 assetname: Images.os_projects,
               ),
             ),
-            SizedBox(height: 10),
+            SizedBox(height: 4.69 * SizeConfig.heightMultiplier),
             FadeTransition(
               opacity: animation,
               child: StreamBuilder(
                   stream: firestore.collection('Projects').snapshots(),
                   builder: (BuildContext context,
                       AsyncSnapshot<QuerySnapshot> snapshot) {
-                    if (snapshot.hasError) {
+                    if (!snapshot.hasData) {
                       return Center(
-                        child: CircularProgressIndicator(),
+                        child: listPlaceholder,
                       );
                     }
-                    switch (snapshot.connectionState) {
-                      case ConnectionState.waiting:
-                        return Center(child: CircularProgressIndicator());
-                      default:
-                        return _buildProjectsListFromFirebase(
-                            context, snapshot.data.documents);
-                    }
+                    return _buildProjectsListFromFirebase(
+                        context, snapshot.data.documents);
                   }),
             ),
+            SizedBox(height: 9.38 * SizeConfig.heightMultiplier),
             Padding(
-              padding: EdgeInsets.only(left: 15.0),
+              padding: EdgeInsets.only(left: 4.17 * SizeConfig.widthMultiplier),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
@@ -253,29 +243,23 @@ class _ContentState extends State<Content> with SingleTickerProviderStateMixin {
                     assetname: Images.writings,
                     title: 'Writings',
                   ),
-                  SizedBox(height: 10),
+                  SizedBox(height: 3.13 * SizeConfig.heightMultiplier),
                   FadeTransition(
                     opacity: animation,
                     child: StreamBuilder(
                         stream: firestore.collection('Writings').snapshots(),
                         builder: (BuildContext context,
                             AsyncSnapshot<QuerySnapshot> snapshot) {
-                          if (snapshot.hasError) {
+                          if (!snapshot.hasData) {
                             return Center(
-                              child: CircularProgressIndicator(),
+                              child: listPlaceholder,
                             );
                           }
-                          switch (snapshot.connectionState) {
-                            case ConnectionState.waiting:
-                              return Center(child: CircularProgressIndicator());
-                            default:
-                              return _buildWritingsListFromFirebase(
-                                  context, snapshot.data.documents);
-                          }
+                          return _buildWritingsListFromFirebase(
+                              context, snapshot.data.documents);
                         }),
                   ),
-                  SizedBox(height: 10),
-                  SizedBox(height: 40),
+                  SizedBox(height: 7.81 * SizeConfig.heightMultiplier),
                   BuiltByWidget(),
                 ],
               ),
@@ -289,7 +273,7 @@ class _ContentState extends State<Content> with SingleTickerProviderStateMixin {
   Widget _buildProjectsListFromFirebase(
       BuildContext context, List<DocumentSnapshot> snapshots) {
     return Container(
-      height: 300,
+      height: 46.88 * SizeConfig.heightMultiplier,
       child: ListView.builder(
         itemCount: snapshots.length,
         scrollDirection: Axis.horizontal,
@@ -305,7 +289,7 @@ class _ContentState extends State<Content> with SingleTickerProviderStateMixin {
   Widget _buildWritingsListFromFirebase(
       BuildContext context, List<DocumentSnapshot> snapshots) {
     return Container(
-      height: 400,
+      height: 46.88 * SizeConfig.heightMultiplier,
       child: ListView.builder(
         itemCount: snapshots.length,
         scrollDirection: Axis.horizontal,

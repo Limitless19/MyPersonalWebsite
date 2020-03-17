@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mypersonalwebsite/core/constants/colors.dart';
 import 'package:mypersonalwebsite/core/error/exceptions.dart';
+import 'package:mypersonalwebsite/core/util/sizeconfig.dart';
 import 'package:mypersonalwebsite/features/home/data/models/project.dart';
 import 'package:mypersonalwebsite/features/home/presentation/widgets/icon_buttons.dart';
 import 'package:url_launcher/url_launcher.dart' as launcher;
@@ -45,7 +46,7 @@ class _ProjectCardState extends State<ProjectCard>
       child: Column(
         mainAxisSize: MainAxisSize.max,
         children: <Widget>[
-          SizedBox(height: 12.0 - (_controller.value * 12.0)),
+          SizedBox(height: (1.88 * SizeConfig.heightMultiplier) - (_controller.value * (1.88 * SizeConfig.heightMultiplier))),
           InkWell(
             onTap: () async {
               setState(() {
@@ -66,47 +67,50 @@ class _ProjectCardState extends State<ProjectCard>
               });
             },
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              padding:  EdgeInsets.symmetric(horizontal: 2.22 * SizeConfig.widthMultiplier),
               child: Container(
-                width: 300,
+                width: 84.33 * SizeConfig.widthMultiplier,
                 child: Card(
                   clipBehavior: Clip.antiAliasWithSaveLayer,
                   elevation: _controller.value * 8.0,
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0),
+                    borderRadius: BorderRadius.circular(1.56 * SizeConfig.heightMultiplier),
                   ),
                   child: Stack(
                     children: <Widget>[
                       Container(
-                        height: 270,
+                        height: 42.19 * SizeConfig.heightMultiplier,
                         child: Column(
                           children: <Widget>[
                             Align(
                               alignment: Alignment.topRight,
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: <Widget>[
-                                  LinkButton(
-                                    iconData: FontAwesomeIcons.github,
-                                    onPressed: () {
-                                      String url = widget.project.githubUrl;
-                                      launchUrl(url);
-                                    },
-                                    tooltip: 'Source Code',
-                                    color: Colours.darkestColor,
-                                    hoverColor: Colours.lightColor,
-                                  ),
-                                  LinkButton(
-                                    iconData: Icons.language,
-                                    onPressed: () {
-                                      String url = widget.project.linkUrl;
-                                      launchUrl(url);
-                                    },
-                                    tooltip: 'Project',
-                                    color: Colours.darkestColor,
-                                    hoverColor: Colours.lightColor,
-                                  ),
-                                ],
+                              child: Padding(
+                                padding:  EdgeInsets.only(top:1.25 * SizeConfig.heightMultiplier),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: <Widget>[
+                                    LinkButton(
+                                      iconData: FontAwesomeIcons.github,
+                                      onPressed: () {
+                                        String url = widget.project.githubUrl;
+                                        launchUrl(url);
+                                      },
+                                      tooltip: 'Source Code',
+                                      color: Colours.darkestColor,
+                                      hoverColor: Colours.lightColor,
+                                    ),
+                                    LinkButton(
+                                      iconData: Icons.language,
+                                      onPressed: () {
+                                        String url = widget.project.linkUrl;
+                                        launchUrl(url);
+                                      },
+                                      tooltip: 'Project',
+                                      color: Colours.darkestColor,
+                                      hoverColor: Colours.lightColor,
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                             Row(
@@ -117,18 +121,18 @@ class _ProjectCardState extends State<ProjectCard>
                                 Column(
                                   children: <Widget>[
                                     Header(title: widget.project.title),
-                                    SizedBox(height: 10),
+                                    SizedBox(height: 1.56 * SizeConfig.heightMultiplier),
                                     Container(
-                                      padding: EdgeInsets.only(left: 16.0),
-                                      width: 140,
-                                      height: 120,
+                                      padding: EdgeInsets.only(left: 4.44 * SizeConfig.widthMultiplier),
+                                      width: 41.18 * SizeConfig.widthMultiplier,
+                                      height: 18.75 * SizeConfig.heightMultiplier,
                                       child: SingleChildScrollView(
                                         scrollDirection: Axis.vertical,
                                         child: Text(
                                           widget.project.shortDescription,
                                           style: TextStyle(
-                                            color: Colors.grey,
-                                            fontSize: 14.0,
+                                            color: Colours.darkestColor,
+                                            fontSize: 2.19 * SizeConfig.textMultiplier,
                                           ),
                                         ),
                                       ),
@@ -137,12 +141,12 @@ class _ProjectCardState extends State<ProjectCard>
                                 ),
                                 Spacer(),
                                 Padding(
-                                  padding: const EdgeInsets.only(
-                                      left: 12.0, right: 12.0, top: 10.0),
+                                  padding:  EdgeInsets.only(
+                                      left: 3.33 * SizeConfig.widthMultiplier, right: 3.33 * SizeConfig.widthMultiplier, top: 1.56 * SizeConfig.heightMultiplier),
                                   child: Image.network(
                                     widget.project.imagePath,
-                                    height: 110,
-                                    width: 120,
+                                    height: 17.19 *SizeConfig.heightMultiplier,
+                                    width: 33.33* SizeConfig.widthMultiplier,
                                     fit: BoxFit.fill,
                                   ),
                                 ),
@@ -190,9 +194,9 @@ class Header extends StatelessWidget {
     return Align(
       alignment: Alignment.topLeft,
       child: Container(
-        width: 130,
+        width: 38.24 * SizeConfig.widthMultiplier,
         child: Padding(
-          padding: const EdgeInsets.only(left: 8.0),
+          padding:  EdgeInsets.only(left: 2.22 * SizeConfig.widthMultiplier),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
@@ -201,12 +205,12 @@ class Header extends StatelessWidget {
                 maxLines: 2,
                 overflow: TextOverflow.fade,
               ),
-              SizedBox(height: 4),
+              SizedBox(height: 0.63 * SizeConfig.heightMultiplier),
               Container(
-                height: 5,
+                height: 0.78 * SizeConfig.heightMultiplier,
                 width: title.length * 10.0,
                 decoration: BoxDecoration(
-                  color: Colors.blueAccent,
+                  color: Colours.darkColor,
                 ),
               )
             ],
