@@ -32,7 +32,6 @@ class MyApp extends StatelessWidget {
                   initialRoute: MyHomePage.id,
                   routes: {
                     MyHomePage.id: (context) => MyHomePage(),
-                    'AboutPage': (context) => AboutPage(),
                   },
                 );
               }
@@ -40,21 +39,6 @@ class MyApp extends StatelessWidget {
           }
         );
       },
-    );
-  }
-}
-
-class AboutPage extends StatelessWidget {
-  const AboutPage({Key key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        child: Center(
-          child: Text('About Page'),
-        ),
-      ),
     );
   }
 }

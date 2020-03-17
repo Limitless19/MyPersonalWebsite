@@ -25,7 +25,7 @@ class HeaderWidget extends StatelessWidget {
           SizedBox(height: 4),
           Container(
             height: 5,
-            width: 42,
+            width: title.length * 10.0,
             decoration: BoxDecoration(
               color: Colors.blueAccent,
             ),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mypersonalwebsite/core/constants/colors.dart';
 
 class ActionWidget extends StatefulWidget {
   final String text;
@@ -49,7 +50,9 @@ class _ActionWidgetState extends State<ActionWidget>
         padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
         child: Column(
           children: <Widget>[
-            Text(widget.text),
+            Text(widget.text,style: TextStyle(
+              color: Colours.lightestColor,
+            )),
             SizedBox(height: 5),
             Container(
               height: 4,

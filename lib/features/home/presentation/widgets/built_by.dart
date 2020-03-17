@@ -16,25 +16,34 @@ class BuiltByWidget extends StatelessWidget {
           children: <Widget>[
             Expanded(flex: 1, child: SizedBox()),
             Expanded(
-              flex: 10,
+              flex: 17,
               child: InkWell(
                 onTap: () {
                   launchURL(twitterUrl);
                 },
-                child: Text('Oke Tolulope (@iamLimitless19)'),
+                child: Text(
+                  'Oke Tolulope (@iamLimitless19)',
+                  style: TextStyle(fontSize: 16),
+                  softWrap: true,
+                  textAlign: TextAlign.center,
+                ),
               ),
             ),
             Expanded(flex: 1, child: SizedBox()),
           ],
         ),
-        Center(
+        Align(
+          alignment: Alignment.center,
           child: Row(
             children: <Widget>[
-              Text('Built with'),
+              Text(
+                'Built with ',
+                textAlign: TextAlign.center,
+              ),
               FlutterLogo(size: 16),
             ],
           ),
-        )
+        ),
       ],
     );
   }

@@ -5,8 +5,11 @@ class Writing {
   final String imagePath;
   final String shortDescription;
   final String linkUrl;
+  final String monthYear;
+  final String minutesRead;
 
-  Writing({this.title, this.imagePath, this.shortDescription, this.linkUrl});
+  Writing(this.monthYear, this.minutesRead,
+      {this.title, this.imagePath, this.shortDescription, this.linkUrl});
 
   Writing.fromSnapshot(DocumentSnapshot snapshot) : this.fromMap(snapshot.data);
 
@@ -14,9 +17,13 @@ class Writing {
       : assert(map["title"] != null),
         assert(map["imagePath"] != null),
         assert(map["shortDescription"] != null),
+        assert(map["monthYear"] != null),
         assert(map["linkUrl"] != null),
+        assert(map["minutesRead"] != null),
         title = map["title"],
         imagePath = map["imagePath"],
+        monthYear = map["monthYear"],
         shortDescription = map["shortDescription"],
+        minutesRead = map["minutesRead"],
         linkUrl = map["linkUrl"];
 }
