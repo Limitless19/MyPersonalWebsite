@@ -72,14 +72,31 @@ class _ContentState extends State<Content>
   AnimationController _appBarController;
   AnimationController _helloController;
   AnimationController _infoController;
+  AnimationController _aboutMeController;
+  AnimationController _linksController;
+  AnimationController _avatarController;
   AnimationController _picController;
   AnimationController _openSourceController;
+  AnimationController _openSourceBodyController;
   AnimationController _writingsController;
+  AnimationController _writingsBodyController;
   AnimationController _builtByController;
 
   Animation<Color> animation;
-  Animation<double> opacityAnimation;
+  Animation<double> appBarAnimation;
   Animation<double> scaleAnimation;
+
+  Animation<double> helloAnimation;
+  Animation<double> avatarAnimation;
+  Animation<double> infoAnimation;
+  Animation<Offset> linksAnimation;
+  Animation<Offset> picsAnimation;
+  Animation<Offset> openSourceTopicAnimation;
+  Animation<Offset> writingsAnimation;
+  Animation<Offset> buitByAnimation;
+  Animation<Offset> aboutMeTitleAnimation;
+  Animation<double> openSourceBodyAnimation;
+  Animation<double> writingsBodyAnimation;
 
   PaletteGenerator palette;
 
@@ -92,33 +109,103 @@ class _ContentState extends State<Content>
     generatePalette(Images.limitless_icon)
         .then((palette) => this.palette = palette);
 
-    _controller = AnimationController(
-      vsync: this,
-      duration: Duration(
-        milliseconds: 100,
-      ),
-    );
+    _controller =
+        AnimationController(vsync: this, duration: Duration(milliseconds: 100))
+          ..addListener(() {
+            setState(() {});
+          });
 
-    _appBarController = AnimationController(
-      vsync: this,
-      duration: Duration(
-        milliseconds: 600,
-      ),
-    );
+    _appBarController =
+        AnimationController(vsync: this, duration: Duration(milliseconds: 1000))
+          ..addListener(() {
+            setState(() {});
+          });
+    _helloController =
+        AnimationController(vsync: this, duration: Duration(milliseconds: 1400))
+          ..addListener(() {
+            setState(() {});
+          });
+    _aboutMeController =
+        AnimationController(vsync: this, duration: Duration(milliseconds: 1400))
+          ..addListener(() {
+            setState(() {});
+          });
+    _infoController =
+        AnimationController(vsync: this, duration: Duration(milliseconds: 1100))
+          ..addListener(() {
+            setState(() {});
+          });
+    _linksController =
+        AnimationController(vsync: this, duration: Duration(milliseconds: 1400))
+          ..addListener(() {
+            setState(() {});
+          });
+    _avatarController =
+        AnimationController(vsync: this, duration: Duration(milliseconds: 1000))
+          ..addListener(() {
+            setState(() {});
+          });
+
+    _picController =
+        AnimationController(vsync: this, duration: Duration(milliseconds: 600))
+          ..addListener(() {
+            setState(() {});
+          });
+    _openSourceController =
+        AnimationController(vsync: this, duration: Duration(milliseconds: 1400))
+          ..addListener(() {
+            setState(() {});
+          });
+    _openSourceBodyController = AnimationController(
+        vsync: this, duration: Duration(milliseconds: 1000))
+      ..addListener(() {
+        setState(() {});
+      });
+    _writingsController =
+        AnimationController(vsync: this, duration: Duration(milliseconds: 1400))
+          ..addListener(() {
+            setState(() {});
+          });
+    _writingsBodyController =
+        AnimationController(vsync: this, duration: Duration(milliseconds: 1000))
+          ..addListener(() {
+            setState(() {});
+          });
+    _builtByController =
+        AnimationController(vsync: this, duration: Duration(milliseconds: 600))
+          ..addListener(() {
+            setState(() {});
+          });
 
     animation =
         ColorTween(begin: Colours.darkestColor, end: Colours.lightestColor)
             .animate(_controller);
-    opacityAnimation =
+    appBarAnimation =
         Tween<double>(begin: 0.0, end: 1.0).animate(_appBarController);
-
-    _controller.addListener(() {
-      setState(() {});
-    });
-
-    _appBarController.addListener(() {
-      setState(() {});
-    });
+    avatarAnimation =
+        Tween<double>(begin: 0.0, end: 1.0).animate(_avatarController);
+    helloAnimation =
+        Tween<double>(begin: 0.0, end: 1.0).animate(_helloController);
+    infoAnimation =
+        Tween<double>(begin: 0.0, end: 1.0).animate(_infoController);
+    linksAnimation = Tween<Offset>(begin: Offset(0.9, 0), end: Offset(0, 0))
+        .animate(_linksController);
+    picsAnimation = Tween<Offset>(begin: Offset(0, 0), end: Offset(-0.05, 0))
+        .animate(_picController);
+    aboutMeTitleAnimation =
+        Tween<Offset>(begin: Offset(-0.4, 0), end: Offset(0, 0))
+            .animate(_aboutMeController);
+    openSourceTopicAnimation =
+        Tween<Offset>(begin: Offset(1.0, 0), end: Offset(0, 0))
+            .animate(_openSourceController);
+    openSourceBodyAnimation =
+        Tween<double>(begin: 0, end: 1).animate(_openSourceBodyController);
+    writingsAnimation = Tween<Offset>(begin: Offset(1.0, 0), end: Offset(0, 0))
+        .animate(_writingsController);
+    writingsBodyAnimation =
+        Tween<double>(begin: 0, end: 1).animate(_writingsBodyController);
+    buitByAnimation = Tween<Offset>(begin: Offset(0, 0.5), end: Offset(0, 0))
+        .animate(_builtByController);
   }
 
   @override
@@ -127,6 +214,9 @@ class _ContentState extends State<Content>
     _controller.dispose();
     _appBarController.dispose();
     _helloController.dispose();
+    _linksController.dispose();
+    _avatarController.dispose();
+    _aboutMeController.dispose();
     _infoController.dispose();
     _picController.dispose();
     _openSourceController.dispose();
@@ -171,10 +261,33 @@ class _ContentState extends State<Content>
             openSourceProjectsBloc.openSourceProjectsSink(false);
           }
           if (_scrollController.position.pixels >=
-              (190 * SizeConfig.heightMultiplier)) {
+              (92.4 * SizeConfig.heightMultiplier)) {
+            setState(() {
+              _openSourceController
+                  .forward()
+                  .whenComplete(() => {_openSourceBodyController.forward()});
+            });
+          }
+          if (_scrollController.position.pixels >=
+              (190.5 * SizeConfig.heightMultiplier)) {
             defaultBloc.defaultSink(true);
           } else {
             defaultBloc.defaultSink(false);
+          }
+          if (_scrollController.position.pixels >=
+              (160.82 * SizeConfig.heightMultiplier)) {
+            setState(() {
+              _writingsController
+                  .forward()
+                  .whenComplete(() => {_writingsBodyController.forward()});
+            });
+          }
+          if (_scrollController.position.pixels >=
+              _scrollController.position.maxScrollExtent -
+                  (10 * SizeConfig.heightMultiplier)) {
+            _builtByController.forward();
+          } else {
+            _builtByController.reverse();
           }
         }
         return true;
@@ -191,12 +304,12 @@ class _ContentState extends State<Content>
                 elevation: 0.0,
                 backgroundColor: Colors.transparent,
                 leading: ScaleTransition(
-                  scale: opacityAnimation,
+                  scale: avatarAnimation,
                   child: LimitlessAvatar(),
                 ),
                 actions: <Widget>[
                   FadeTransition(
-                    opacity: opacityAnimation,
+                    opacity: appBarAnimation,
                     child: ActionWidget(
                       text: 'About Me',
                       onTapped: () {
@@ -208,7 +321,7 @@ class _ContentState extends State<Content>
                     ),
                   ),
                   FadeTransition(
-                    opacity: opacityAnimation,
+                    opacity: appBarAnimation,
                     child: ActionWidget(
                       text: 'Projects',
                       onTapped: () {
@@ -220,7 +333,7 @@ class _ContentState extends State<Content>
                     ),
                   ),
                   FadeTransition(
-                    opacity: opacityAnimation,
+                    opacity: appBarAnimation,
                     child: ActionWidget(
                       text: 'Writings',
                       onTapped: () {
@@ -239,7 +352,8 @@ class _ContentState extends State<Content>
                   mainAxisSize: MainAxisSize.max,
                   children: <Widget>[
                     FadeTransition(
-                                          child: Text('Hi,I am Limitless!',
+                      opacity: helloAnimation,
+                      child: Text('Hi,I am Limitless!',
                           style: TextStyle(
                               color: Colours.lightestColor,
                               fontSize: 3.44 * SizeConfig.heightMultiplier)),
@@ -250,31 +364,34 @@ class _ContentState extends State<Content>
                         bottom: 4 * SizeConfig.heightMultiplier,
                       ),
                       child: FadeTransition(
-                          child: Row(
+                        opacity: infoAnimation,
+                        child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
                             RotateAnimatedTextKit(
-                            onTap: () {},
-                            text: [
-                              'NodeJs',
-                              'Django',
-                              "Android",
-                              "Flutter",
-                            ],
-                            duration: Duration(milliseconds: 14000),
-                            textStyle: TextStyle(
-                                fontSize: 6.25 * SizeConfig.heightMultiplier,
-                                color: animation.value),
-                            textAlign: TextAlign.center,
-                            alignment: AlignmentDirectional.centerStart),
+                                onTap: () {},
+                                text: [
+                                  'NodeJs',
+                                  'Django',
+                                  "Android",
+                                  "Flutter",
+                                ],
+                                duration: Duration(milliseconds: 14000),
+                                textStyle: TextStyle(
+                                    fontSize:
+                                        6.25 * SizeConfig.heightMultiplier,
+                                    color: animation.value),
+                                textAlign: TextAlign.center,
+                                alignment: AlignmentDirectional.centerStart),
                           ],
                         ),
                       ),
                     ),
                   ],
                 ),
-                FadeTransition(
-                      child: Row(
+                SlideTransition(
+                  position: linksAnimation,
+                  child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: listIconButtons),
                 ),
@@ -285,19 +402,18 @@ class _ContentState extends State<Content>
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Column(
-                        children: <Widget>[
-                          HeaderWidget(
-                            title: 'About me',
-                            assetname: Images.about_me_icon,
-                            stream: aboutMeBloc.aboutMeStream,
-                          ),
-                          Container(),
-                        ],
+                      SlideTransition(
+                        position: aboutMeTitleAnimation,
+                        child: HeaderWidget(
+                          title: 'About me',
+                          assetname: Images.about_me_icon,
+                          stream: aboutMeBloc.aboutMeStream,
+                        ),
                       ),
                       SizedBox(height: 1.56 * SizeConfig.heightMultiplier),
                       FadeTransition(
-                            child: BackgroundDymanicText(
+                        opacity: infoAnimation,
+                        child: BackgroundDymanicText(
                             firstColor: Colours.darkestColor,
                             secondColor: Colours.lightestColor,
                             stream: myDescriptionBloc.myDescriptionStream,
@@ -305,7 +421,8 @@ class _ContentState extends State<Content>
                       ),
                       SizedBox(height: 3.56 * SizeConfig.heightMultiplier),
                       SlideTransition(
-                            child: ProfilePicture(
+                        position: picsAnimation,
+                        child: ProfilePicture(
                             radius: 18.75 * SizeConfig.heightMultiplier),
                       ),
                     ],
@@ -315,15 +432,19 @@ class _ContentState extends State<Content>
                 Padding(
                   padding:
                       EdgeInsets.only(left: 4.17 * SizeConfig.widthMultiplier),
-                  child: HeaderWidget(
-                    title: 'Open Source Projects',
-                    assetname: Images.os_projects,
-                    stream: openSourceProjectsBloc.openSourceProjectsStream,
+                  child: SlideTransition(
+                    position: openSourceTopicAnimation,
+                    child: HeaderWidget(
+                      title: 'Open Source Projects',
+                      assetname: Images.os_projects,
+                      stream: openSourceProjectsBloc.openSourceProjectsStream,
+                    ),
                   ),
                 ),
                 SizedBox(height: 4.69 * SizeConfig.heightMultiplier),
                 FadeTransition(
-                    child: StreamBuilder(
+                  opacity: openSourceBodyAnimation,
+                  child: StreamBuilder(
                       stream: firestore.collection('Projects').snapshots(),
                       builder: (BuildContext context,
                           AsyncSnapshot<QuerySnapshot> snapshot) {
@@ -343,29 +464,37 @@ class _ContentState extends State<Content>
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      HeaderWidget(
-                        assetname: Images.writings,
-                        title: 'Writings',
-                        stream: defaultBloc.defaultStream,
+                      SlideTransition(
+                        position: writingsAnimation,
+                        child: HeaderWidget(
+                          assetname: Images.writings,
+                          title: 'Writings',
+                          stream: defaultBloc.defaultStream,
+                        ),
                       ),
                       SizedBox(height: 3.13 * SizeConfig.heightMultiplier),
-                      StreamBuilder(
-                          stream: firestore.collection('Writings').snapshots(),
-                          builder: (BuildContext context,
-                              AsyncSnapshot<QuerySnapshot> snapshot) {
-                            if (!snapshot.hasData) {
-                              return Center(
-                                child: listPlaceholder,
-                              );
-                            }
-                            return _buildWritingsListFromFirebase(
-                                context, snapshot.data.documents);
-                          }),
+                      FadeTransition(
+                        opacity: writingsBodyAnimation,
+                        child: StreamBuilder(
+                            stream:
+                                firestore.collection('Writings').snapshots(),
+                            builder: (BuildContext context,
+                                AsyncSnapshot<QuerySnapshot> snapshot) {
+                              if (!snapshot.hasData) {
+                                return Center(
+                                  child: listPlaceholder,
+                                );
+                              }
+                              return _buildWritingsListFromFirebase(
+                                  context, snapshot.data.documents);
+                            }),
+                      ),
                       SizedBox(height: 7.81 * SizeConfig.heightMultiplier),
                     ],
                   ),
                 ),
                 SlideTransition(
+                  position: buitByAnimation,
                   child: BuiltByWidget(),
                 ),
               ]),
@@ -410,24 +539,44 @@ class _ContentState extends State<Content>
 
   @override
   void afterFirstLayout(BuildContext context) {
-    Duration displayAppBar = Duration(milliseconds: 1500);
+    Duration displayAppBar = Duration(milliseconds: 700);
     Future.delayed(displayAppBar, () {
       setState(() {
         _appBarController.forward();
       });
     });
 
-    Duration helloMessage = Duration(milliseconds: 2000);
+    Duration displayLeadingAvatar = Duration(milliseconds: 2400);
+    Future.delayed(displayLeadingAvatar, () {
+      setState(() {
+        _avatarController.forward();
+      });
+    });
+
+    Duration helloMessage = Duration(milliseconds: 5700);
     Future.delayed(helloMessage, () {
       setState(() {
         _helloController.forward();
       });
     });
 
-    Duration infoMessage = Duration(milliseconds: 2500);
-    Future.delayed(helloMessage, () {
+    Duration aboutMeTitle = Duration(milliseconds: 3500);
+    Future.delayed(aboutMeTitle, () {
+      setState(() {
+        _aboutMeController.forward();
+      });
+    });
+    Duration infoMessage = Duration(milliseconds: 3800);
+    Future.delayed(infoMessage, () {
       setState(() {
         _infoController.forward();
+      });
+    });
+
+    Duration links = Duration(milliseconds: 4500);
+    Future.delayed(links, () {
+      setState(() {
+        _linksController.forward();
       });
     });
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:mypersonalwebsite/core/constants/colors.dart';
-import 'package:mypersonalwebsite/core/utils/size_config.dart';
+
+import '../../../../core/constants/colors.dart';
+import '../../../../core/utils/size_config.dart';
 
 class ActionWidget extends StatefulWidget { 
   final String text;
@@ -14,7 +15,7 @@ class ActionWidget extends StatefulWidget {
 
 class _ActionWidgetState extends State<ActionWidget>
     with SingleTickerProviderStateMixin {
-  AnimationController _controller;
+  AnimationController _controller; 
 
   @override
   void initState() {
@@ -47,17 +48,17 @@ class _ActionWidgetState extends State<ActionWidget>
       splashColor: Colors.transparent,
       onTap: widget.onTapped ?? null,
       child: Padding(
-        padding:  EdgeInsets.symmetric(horizontal: 2.22 * SizeConfig.widthMultiplier, vertical: 1.25 * SizeConfig.heightMultiplier),
+        padding:  EdgeInsets.only(left: 2.22 * SizeConfig.widthMultiplier,right: 2.22 * SizeConfig.widthMultiplier, top: 1.0 * SizeConfig.heightMultiplier),
         child: Column(
           children: <Widget>[
             Text(widget.text,style: TextStyle(
-              fontSize: 2.35 * SizeConfig.heightMultiplier,
+              fontSize: 2.20 * SizeConfig.heightMultiplier,
               color: Colours.lightestColor,
             )),
-            SizedBox(height: 1.5 * SizeConfig.widthMultiplier),
+            SizedBox(height: 1.0 * SizeConfig.widthMultiplier),
             Container(
               height:  0.73 * SizeConfig.heightMultiplier,
-              width: _controller.value * (12.71 * SizeConfig.widthMultiplier),
+              width:_controller.value * (12.71 * SizeConfig.widthMultiplier),
               decoration: BoxDecoration(color: Colors.white),
             ),
           ],
