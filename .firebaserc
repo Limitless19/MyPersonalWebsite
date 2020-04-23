@@ -1,5 +1,17 @@
 {
   "projects": {
     "default": "my-personal-website-28fe2"
+  },
+  "targets": {
+    "my-personal-website-28fe2": {
+      "hosting": {
+        "target-name": [
+          "resource-name"
+        ],
+        "iamlimitless19": [
+          "iamlimitless19"
+        ]
+      }
+    }
   }
 }

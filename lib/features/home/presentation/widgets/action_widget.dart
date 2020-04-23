@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mypersonalwebsite/core/constants/colors.dart';
-import 'package:mypersonalwebsite/core/util/sizeconfig.dart';
+import 'package:mypersonalwebsite/core/utils/size_config.dart';
 
-class ActionWidget extends StatefulWidget {
+class ActionWidget extends StatefulWidget { 
   final String text;
   final Function onTapped;
   const ActionWidget({Key key, @required this.text, this.onTapped})
@@ -23,7 +23,6 @@ class _ActionWidgetState extends State<ActionWidget>
 
     _controller.addListener(() {
       setState(() {
-        print(_controller.value);
       });
     });
 

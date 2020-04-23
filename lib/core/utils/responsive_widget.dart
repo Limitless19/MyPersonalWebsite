@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
-import 'sizeconfig.dart';
+import 'size_config.dart';
 
 class ResponsiveWidget extends StatelessWidget {
    ResponsiveWidget({Key key, @required this.portraitLayout,this.landscapeLayout}) : super(key: key);
-
    final Widget portraitLayout;
    final Widget landscapeLayout;
 
 
   @override
   Widget build(BuildContext context) {
-    if(SizeConfig.isPortrait){
+    if(SizeConfig.isPortrait && SizeConfig.isMobilePortrait){
       return portraitLayout;
     }else{
       return landscapeLayout ?? portraitLayout;

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mypersonalwebsite/core/utils/size_config.dart';
 
 class PlaceholderImageWithText extends StatelessWidget {
   final double width;
@@ -20,8 +21,8 @@ class PlaceholderImageWithText extends StatelessWidget {
   Widget build(BuildContext context) {
     var fgColor = color ?? Color(0xfff2f2f2);
     return Container(
-      width: width,
-      height: height,
+      width: 60 * SizeConfig.widthMultiplier ,
+      height:18 * SizeConfig.heightMultiplier,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(cornerRadius),
         color: backgroundColor ?? Colors.white,

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mypersonalwebsite/core/constants/colors.dart';
-import 'package:mypersonalwebsite/core/util/sizeconfig.dart';
-import 'package:mypersonalwebsite/features/home/presentation/pages/my_homepage.dart';
+import 'package:mypersonalwebsite/core/utils/size_config.dart';
+import 'package:mypersonalwebsite/features/home/presentation/bloc/bloc.dart';
+import 'package:mypersonalwebsite/features/home/presentation/widgets/layouts/portrait_layout.dart';
 
 final List<Widget> listIconButtons = [
   LinkButton(
@@ -51,7 +52,7 @@ class LinkButton extends StatefulWidget {
   final String tooltip;
   final Color color;
   final Color hoverColor;
-  const LinkButton(
+   LinkButton(
       {Key key,
       this.iconData,
       this.onPressed,
@@ -93,28 +94,36 @@ class _LinkButtonState extends State<LinkButton>
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding:  EdgeInsets.symmetric(horizontal: 2.22 * SizeConfig.widthMultiplier),
-      child: InkWell(
-        onHover: (isHovering) {
-          setState(() {
-            if (isHovering == true) {
-              _controller.forward();
-            } else {
-              _controller.reverse();
-            }
-          });
-        },
-        onTap: widget.onPressed,
-        child: Tooltip(
-          message: widget.tooltip,
-          child: Icon(
-            widget.iconData,
-            color: _animation.value,
-            size: 8.24 * SizeConfig.widthMultiplier,
+    return StreamBuilder<bool>(
+      stream: linkButtonBloc.linkButtonStream,
+      initialData: false,
+      builder: (BuildContext context,AsyncSnapshot<bool> snapshot) {
+        return Padding(
+          padding:  EdgeInsets.symmetric(horizontal: 2.22 * SizeConfig.widthMultiplier),
+          child: InkWell(
+            hoverColor: Colors.transparent,
+            highlightColor: Colours.lightColor,
+            onHover: (isHovering) {
+              setState(() {
+                if (isHovering == true) {
+                  _controller.forward();
+                } else {
+                  _controller.reverse();
+                }
+              });
+            },
+            onTap: widget.onPressed,
+            child: Tooltip(
+              message: widget.tooltip,
+              child: Icon(
+                widget.iconData,
+                color: snapshot.data == true ? Colours.lightestColor :  _animation.value,
+                size: 8.24 * SizeConfig.widthMultiplier,
+              ),
+            ),
           ),
-        ),
-      ),
+        );
+      }
     );
   }
 }

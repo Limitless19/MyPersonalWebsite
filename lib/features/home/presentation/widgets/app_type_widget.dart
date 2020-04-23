@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mypersonalwebsite/core/constants/colors.dart';
-import 'package:mypersonalwebsite/core/util/sizeconfig.dart';
+import 'package:mypersonalwebsite/core/utils/size_config.dart';
 import 'package:mypersonalwebsite/features/home/data/models/project.dart';
 
 class AppTypeWidget extends StatelessWidget {

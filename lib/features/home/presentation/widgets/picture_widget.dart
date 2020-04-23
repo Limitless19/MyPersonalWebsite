@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mypersonalwebsite/core/util/sizeconfig.dart';
+import 'package:mypersonalwebsite/core/utils/size_config.dart';
 
 class ProfilePicture extends StatefulWidget {
   final String imageUrl;
@@ -25,7 +25,6 @@ class _ProfilePictureState extends State<ProfilePicture>
 
     _controller.addListener(() { 
       setState(() {
-        print(_controller.value);
       });
     });    
     _controller.forward();
@@ -60,9 +59,9 @@ class _ProfilePictureState extends State<ProfilePicture>
       },
       child: Material(
       elevation: 5.0,
-      borderRadius: BorderRadius.all(Radius.circular(_controller.value* 80)),
+      borderRadius: BorderRadius.all(Radius.circular(_controller.value* (12.5 * SizeConfig.heightMultiplier))),
       child: ClipRRect(
-        borderRadius: BorderRadius.all(Radius.circular(_controller.value * 80)),
+        borderRadius: BorderRadius.all(Radius.circular(_controller.value * (12.5 * SizeConfig.heightMultiplier))),
         child: Image.network(
           widget.imageUrl,
           height: 32.81 * SizeConfig.heightMultiplier,

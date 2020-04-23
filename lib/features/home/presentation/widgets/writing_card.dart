@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mypersonalwebsite/core/constants/colors.dart';
 import 'package:mypersonalwebsite/core/error/exceptions.dart';
-import 'package:mypersonalwebsite/core/util/sizeconfig.dart';
+import 'package:mypersonalwebsite/core/utils/size_config.dart';
 import 'package:mypersonalwebsite/features/home/data/models/writing.dart';
 import 'package:url_launcher/url_launcher.dart' as launcher;
 
@@ -30,10 +30,8 @@ class _WritingCardState extends State<WritingCard>
 
     _controller.addListener(() {
       setState(() {});
-      print(_controller.value);
     });
     _controller.addStatusListener((status) {
-      print(status);
     });
     super.initState();
   }

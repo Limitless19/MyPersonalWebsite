@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import './bloc.dart';
 
@@ -16,39 +15,101 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 }
 
 
-// class FirebaseBloc {
-//   StreamController<QuerySnapshot> listController =
-//       StreamController<QuerySnapshot>.broadcast();
+//For the love of UI
+class LinkButtonBloc {
+  StreamController<bool> linkButtonController =
+      StreamController<bool>.broadcast();
 
-//     StreamController<QuerySnapshot> writingsController =
-//       StreamController<QuerySnapshot>.broadcast();    
+  Stream<bool> get linkButtonStream => linkButtonController.stream;
 
-//   Stream<QuerySnapshot> get projectsListStream => listController.stream;
-//     Stream<QuerySnapshot> get writingsListStream => writingsController.stream;
+  Function(bool) get linkButtonSink => linkButtonController.sink.add;
 
 
-//   StreamSink<QuerySnapshot> get projectsListSink => listController.sink;
-//     StreamSink<QuerySnapshot> get writingsListSink => writingsController.sink;
+  LinkButtonBloc() {
+    linkButtonSink(false);
+  }
 
-//   Stream<QuerySnapshot> getProjectsList() {
-//     return Firestore.instance.collection("Projects").snapshots();
-//   }
+  dispose() {
+    linkButtonController.close();
+  }
+}
 
-//  Stream<QuerySnapshot> getWritingsList() {
-//     return Firestore.instance.collection("Writings").snapshots();
-//   }
+class AboutMeBloc {
+  StreamController<bool> aboutMeController =
+      StreamController<bool>.broadcast();
 
-//   FirebaseBloc() {
-//     getProjectsList().listen((value) {
-//       projectsListSink.add(value);
-//     });
-//     getWritingsList().listen((event) {
-//       writingsListSink.add(event);
-//     });
-//   }
-//   dispose() {
-//     listController.close();
-//     writingsController.close();
-//   }
-// }
-// final firebaseBloc = FirebaseBloc();
+  Stream<bool> get aboutMeStream => aboutMeController.stream;
+
+  Function(bool) get aboutMeSink => aboutMeController.sink.add;
+
+
+  AboutMeBloc() {
+    aboutMeSink(false);
+  }
+
+  dispose() {
+    aboutMeController.close();
+  }
+}
+
+class MyDescriptionBloc {
+  StreamController<bool> myDescriptionController =
+      StreamController<bool>.broadcast();
+
+  Stream<bool> get  myDescriptionStream => myDescriptionController.stream;
+
+  Function(bool) get myDescriptionSink => myDescriptionController.sink.add;
+
+
+  MyDescriptionBloc() {
+     myDescriptionSink(false);
+  }
+
+  dispose() {
+    myDescriptionController.close();
+  }
+}
+
+class OpenSourceProjectsBloc {
+  StreamController<bool> openSourceProjectsController =
+      StreamController<bool>.broadcast();
+
+  Stream<bool> get openSourceProjectsStream => openSourceProjectsController.stream;
+
+  Function(bool) get openSourceProjectsSink => openSourceProjectsController.sink.add;
+
+
+  OpenSourceProjectsBloc() {
+    openSourceProjectsSink(false);
+  }
+
+  dispose() {
+    openSourceProjectsController.close();
+  }
+}
+
+class DefaultBloc {
+  StreamController<bool> defaultController =
+      StreamController<bool>.broadcast();
+
+  Stream<bool> get defaultStream => defaultController.stream;
+
+  Function(bool) get defaultSink => defaultController.sink.add;
+
+
+  DefaultBloc() {
+    defaultSink(false);
+  }
+
+  dispose() {
+    defaultController.close();
+  }
+}
+
+
+
+final linkButtonBloc = LinkButtonBloc();
+final aboutMeBloc = AboutMeBloc();
+final myDescriptionBloc = MyDescriptionBloc();
+final openSourceProjectsBloc = OpenSourceProjectsBloc();
+final defaultBloc = DefaultBloc();

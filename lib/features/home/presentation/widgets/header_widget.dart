@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:mypersonalwebsite/core/constants/colors.dart';
-import 'package:mypersonalwebsite/core/util/sizeconfig.dart';
+import 'package:mypersonalwebsite/core/utils/size_config.dart';
+import 'package:mypersonalwebsite/features/home/presentation/bloc/bloc.dart';
+import 'package:mypersonalwebsite/features/home/presentation/widgets/background_dynamic_text.dart';
 
 class HeaderWidget extends StatelessWidget {
   final String title;
   final String assetname;
+  final Stream stream; 
+
   const HeaderWidget({
     Key key,
     @required this.title,
+    @required this.stream,
     @required this.assetname,
   }) : super(key: key);
 
@@ -19,7 +24,7 @@ class HeaderWidget extends StatelessWidget {
         children: <Widget>[
           Row(
             children: <Widget>[
-              Text(title),
+              BackgroundDymanicText(firstColor: Colours.darkestColor, secondColor: Colours.lightestColor, stream: stream,text: title),
               SizedBox(width: 1.11 * SizeConfig.widthMultiplier),
               Image.asset(assetname, height: 3.75 * SizeConfig.heightMultiplier, width: 7.05 * SizeConfig.widthMultiplier),
             ],
