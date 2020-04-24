@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mypersonalwebsite/core/utils/size_config.dart';
 
 class BackgroundDymanicText extends StatefulWidget {
   final Color firstColor;
@@ -54,6 +55,7 @@ class _BackgroundDymanicTextState extends State<BackgroundDymanicText>
           widget.text,
           style: TextStyle(
             color: snapshot.data == false ? widget.firstColor : widget.secondColor,
+            fontSize: 2.20 * SizeConfig.heightMultiplier,
           ),
         );
       }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mypersonalwebsite/core/constants/colors.dart';
 
 class AppTheme {
   AppTheme._();
@@ -31,6 +32,7 @@ class AppTheme {
     ),
     iconTheme: IconThemeData(color: _iconColor),
     textTheme: _lightTextTheme,
+    primarySwatch: Colors.brown,
   );
 
   static final ThemeData darkTheme = ThemeData(
