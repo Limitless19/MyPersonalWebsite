@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:mypersonalwebsite/core/constants/colors.dart';
-import 'package:mypersonalwebsite/core/utils/size_config.dart';
-import 'package:mypersonalwebsite/features/home/data/models/project.dart';
+
+import '../../../../core/constants/colors.dart';
+import '../../../../core/utils/size_config.dart';
+import '../../data/models/project.dart';
 
 class AppTypeWidget extends StatelessWidget {
   final Project project;

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mypersonalwebsite/core/constants/colors.dart';
 
 class BackgroundDymanicText extends StatefulWidget {
   final Color firstColor;

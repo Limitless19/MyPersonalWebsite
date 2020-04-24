@@ -1,10 +1,10 @@
+import 'package:after_layout/after_layout.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:mypersonalwebsite/features/home/presentation/widgets/background_dynamic_text.dart';
 import 'package:palette_generator/palette_generator.dart';
 import 'package:url_launcher/url_launcher.dart' as launcher;
-import 'package:after_layout/after_layout.dart';
+
 import '../../../../../core/constants/colors.dart';
 import '../../../../../core/constants/images.dart';
 import '../../../../../core/constants/strings.dart';
@@ -15,6 +15,7 @@ import '../../../data/models/project.dart';
 import '../../../data/models/writing.dart';
 import '../../bloc/home_bloc.dart';
 import '../action_widget.dart';
+import '../background_dynamic_text.dart';
 import '../built_by.dart';
 import '../header_widget.dart';
 import '../icon_buttons.dart';

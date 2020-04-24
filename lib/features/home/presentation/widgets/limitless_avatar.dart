@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:mypersonalwebsite/core/constants/images.dart';
-import 'package:mypersonalwebsite/core/utils/size_config.dart';
+
+import '../../../../core/constants/images.dart';
+import '../../../../core/utils/size_config.dart';
 
 class LimitlessAvatar extends StatefulWidget {
   const LimitlessAvatar({
@@ -13,36 +14,16 @@ class LimitlessAvatar extends StatefulWidget {
 
 class _LimitlessAvatarState extends State<LimitlessAvatar>
     with SingleTickerProviderStateMixin {
-  AnimationController _controller;
 
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(
-        vsync: this, duration: Duration(milliseconds: 500), upperBound: 1.0);
-
-    _controller.addListener(() {
-      setState(() {});
-    });
-
-    // _controller.addStatusListener((status) {
-    //   setState(() {
-    //     if (status == AnimationStatus.completed) {
-    //       _controller.reverse();
-    //     } else {
-    //       _controller.forward();
-    //     }
-    //   });
-    // });
-
-    _controller.forward();
   }
 
   @override
   void dispose() {
     super.dispose();
 
-    _controller.dispose();
   }
 
   @override

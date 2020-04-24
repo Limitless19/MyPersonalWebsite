@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:mypersonalwebsite/core/constants/colors.dart';
-import 'package:mypersonalwebsite/core/utils/size_config.dart';
-import 'package:mypersonalwebsite/features/home/data/models/writing.dart';
+
+import '../../../../core/constants/colors.dart';
+import '../../../../core/utils/size_config.dart';
+import '../../data/models/writing.dart';
 
 class TimeDetailsWidget extends StatelessWidget {
   final Writing writing;

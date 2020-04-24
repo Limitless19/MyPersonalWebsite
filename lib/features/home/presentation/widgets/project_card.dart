@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:mypersonalwebsite/core/constants/colors.dart';
-import 'package:mypersonalwebsite/core/error/exceptions.dart';
-import 'package:mypersonalwebsite/core/utils/size_config.dart';
-import 'package:mypersonalwebsite/features/home/data/models/project.dart';
-import 'package:mypersonalwebsite/features/home/presentation/widgets/icon_buttons.dart';
 import 'package:url_launcher/url_launcher.dart' as launcher;
 
+import '../../../../core/constants/colors.dart';
+import '../../../../core/error/exceptions.dart';
+import '../../../../core/utils/size_config.dart';
+import '../../data/models/project.dart';
 import 'app_type_widget.dart';
+import 'icon_buttons.dart';
+
+
+//TODO Build cards for PC and Tab views
 
 class ProjectCard extends StatefulWidget {
   final Project project;

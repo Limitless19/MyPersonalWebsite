@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:mypersonalwebsite/core/utils/responsive_widget.dart';
-import 'package:mypersonalwebsite/features/home/presentation/widgets/layouts/landscape_layout.dart';
-import 'package:mypersonalwebsite/features/home/presentation/widgets/layouts/portrait_layout.dart';
+
+import '../../../../core/utils/responsive_widget.dart';
+import '../widgets/layouts/portrait_layout.dart';
 
 class MyHomePage extends StatelessWidget {
   static const id = 'myhomepage route';

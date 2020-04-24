@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mypersonalwebsite/core/utils/size_config.dart';
+
+import '../../../../core/utils/size_config.dart';
 
 class ProfilePicture extends StatefulWidget {
   final String imageUrl;

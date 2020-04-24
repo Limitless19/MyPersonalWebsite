@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:mypersonalwebsite/core/utils/size_config.dart';
 import 'package:url_launcher/url_launcher.dart' as launcher;
+
+import '../../../../core/utils/size_config.dart';
 
 class BuiltByWidget extends StatelessWidget {
   const BuiltByWidget({
@@ -45,18 +46,20 @@ class BuiltByWidget extends StatelessWidget {
                 child: SizedBox(),
               ),
               Expanded(
-                flex: 9,
-                child: Text(
-                  'Built with ',
-                  textAlign: TextAlign.center,
+                flex: 15,
+                child: Row(
+                  children: <Widget>[
+                    Text(
+                      'Built with ',
+                      textAlign: TextAlign.center,
+                    ),
+                    SizedBox(width: 10),
+                    FlutterLogo(),
+                  ],
                 ),
               ),
               Expanded(
-                flex: 2,
-                child: FlutterLogo(),
-              ),
-              Expanded(
-                flex: 14,
+                flex: 8,
                 child: SizedBox(),
               ),
             ],

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:mypersonalwebsite/core/constants/colors.dart';
-import 'package:mypersonalwebsite/core/utils/size_config.dart';
-import 'package:mypersonalwebsite/features/home/presentation/bloc/bloc.dart';
-import 'package:mypersonalwebsite/features/home/presentation/widgets/layouts/portrait_layout.dart';
+
+import '../../../../core/constants/colors.dart';
+import '../../../../core/utils/size_config.dart';
+import '../bloc/bloc.dart';
+import 'layouts/portrait_layout.dart';
 
 final List<Widget> listIconButtons = [
   LinkButton(
@@ -34,7 +35,9 @@ final List<Widget> listIconButtons = [
       iconData: FontAwesomeIcons.envelope,
       color: Colours.darkestColor,
       hoverColor: Colours.darkColor,
-      onPressed: () {},
+      onPressed: () {
+        launchURL('https://about.me/tolulope.oke');
+      },
       tooltip: 'Contact me'),
   LinkButton(
       iconData: FontAwesomeIcons.twitter,

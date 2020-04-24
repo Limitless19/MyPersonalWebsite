@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:mypersonalwebsite/core/constants/colors.dart';
-import 'package:mypersonalwebsite/core/utils/size_config.dart';
-import 'package:mypersonalwebsite/features/home/presentation/bloc/bloc.dart';
-import 'package:mypersonalwebsite/features/home/presentation/widgets/background_dynamic_text.dart';
+
+import '../../../../core/constants/colors.dart';
+import '../../../../core/utils/size_config.dart';
+import 'background_dynamic_text.dart';
 
 class HeaderWidget extends StatelessWidget {
   final String title;
