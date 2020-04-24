@@ -52,13 +52,15 @@ class LinkButton extends StatefulWidget {
   final String tooltip;
   final Color color;
   final Color hoverColor;
-   LinkButton(
+  final bool forProjectCard;
+  LinkButton(
       {Key key,
       this.iconData,
       this.onPressed,
       @required this.color,
       @required this.hoverColor,
-      @required this.tooltip})
+      @required this.tooltip,
+      this.forProjectCard = false})
       : super(key: key);
 
   @override
@@ -95,35 +97,39 @@ class _LinkButtonState extends State<LinkButton>
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<bool>(
-      stream: linkButtonBloc.linkButtonStream,
-      initialData: false,
-      builder: (BuildContext context,AsyncSnapshot<bool> snapshot) {
-        return Padding(
-          padding:  EdgeInsets.symmetric(horizontal: 2.22 * SizeConfig.widthMultiplier),
-          child: InkWell(
-            hoverColor: Colors.transparent,
-            highlightColor: Colours.lightColor,
-            onHover: (isHovering) {
-              setState(() {
-                if (isHovering == true) {
-                  _controller.forward();
-                } else {
-                  _controller.reverse();
-                }
-              });
-            },
-            onTap: widget.onPressed,
-            child: Tooltip(
-              message: widget.tooltip,
-              child: Icon(
-                widget.iconData,
-                color: snapshot.data == true ? Colours.lightestColor :  _animation.value,
-                size: 8.24 * SizeConfig.widthMultiplier,
+        stream: linkButtonBloc.linkButtonStream,
+        initialData: false,
+        builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
+          return Padding(
+            padding: EdgeInsets.symmetric(
+                horizontal: 2.22 * SizeConfig.widthMultiplier),
+            child: InkWell(
+              hoverColor: Colors.transparent,
+              highlightColor: Colours.lightColor,
+              onHover: (isHovering) {
+                setState(() {
+                  if (isHovering == true) {
+                    _controller.forward();
+                  } else {
+                    _controller.reverse();
+                  }
+                });
+              },
+              onTap: widget.onPressed,
+              child: Tooltip(
+                message: widget.tooltip,
+                child: Icon(
+                  widget.iconData,
+                  color: widget.forProjectCard
+                      ? widget.color
+                      : snapshot.data
+                          ? Colours.lightestColor
+                          : _animation.value,
+                  size: 8.24 * SizeConfig.widthMultiplier,
+                ),
               ),
             ),
-          ),
-        );
-      }
-    );
+          );
+        });
   }
 }

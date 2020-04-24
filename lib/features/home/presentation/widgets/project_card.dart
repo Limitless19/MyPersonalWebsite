@@ -33,8 +33,7 @@ class _ProjectCardState extends State<ProjectCard>
     _controller.addListener(() {
       setState(() {});
     });
-    _controller.addStatusListener((status) {
-    });
+    _controller.addStatusListener((status) {});
     super.initState();
   }
 
@@ -44,7 +43,9 @@ class _ProjectCardState extends State<ProjectCard>
       child: Column(
         mainAxisSize: MainAxisSize.max,
         children: <Widget>[
-          SizedBox(height: (1.88 * SizeConfig.heightMultiplier) - (_controller.value * (1.88 * SizeConfig.heightMultiplier))),
+          SizedBox(
+              height: (1.88 * SizeConfig.heightMultiplier) -
+                  (_controller.value * (1.88 * SizeConfig.heightMultiplier))),
           InkWell(
             onTap: () async {
               setState(() {
@@ -65,14 +66,16 @@ class _ProjectCardState extends State<ProjectCard>
               });
             },
             child: Padding(
-              padding:  EdgeInsets.symmetric(horizontal: 2.22 * SizeConfig.widthMultiplier),
+              padding: EdgeInsets.symmetric(
+                  horizontal: 2.22 * SizeConfig.widthMultiplier),
               child: Container(
                 width: 84.33 * SizeConfig.widthMultiplier,
                 child: Card(
                   clipBehavior: Clip.antiAliasWithSaveLayer,
                   elevation: _controller.value * 8.0,
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(1.56 * SizeConfig.heightMultiplier),
+                    borderRadius: BorderRadius.circular(
+                        1.56 * SizeConfig.heightMultiplier),
                   ),
                   child: Stack(
                     children: <Widget>[
@@ -83,7 +86,8 @@ class _ProjectCardState extends State<ProjectCard>
                             Align(
                               alignment: Alignment.topRight,
                               child: Padding(
-                                padding:  EdgeInsets.only(top:1.25 * SizeConfig.heightMultiplier),
+                                padding: EdgeInsets.only(
+                                    top: 1.25 * SizeConfig.heightMultiplier),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.min,
                                   children: <Widget>[
@@ -94,6 +98,7 @@ class _ProjectCardState extends State<ProjectCard>
                                         launchUrl(url);
                                       },
                                       tooltip: 'Source Code',
+                                      forProjectCard: true,
                                       color: Colours.darkestColor,
                                       hoverColor: Colours.lightColor,
                                     ),
@@ -104,6 +109,7 @@ class _ProjectCardState extends State<ProjectCard>
                                         launchUrl(url);
                                       },
                                       tooltip: 'Project',
+                                      forProjectCard: true,
                                       color: Colours.darkestColor,
                                       hoverColor: Colours.lightColor,
                                     ),
@@ -119,18 +125,24 @@ class _ProjectCardState extends State<ProjectCard>
                                 Column(
                                   children: <Widget>[
                                     Header(title: widget.project.title),
-                                    SizedBox(height: 1.56 * SizeConfig.heightMultiplier),
+                                    SizedBox(
+                                        height:
+                                            1.56 * SizeConfig.heightMultiplier),
                                     Container(
-                                      padding: EdgeInsets.only(left: 4.44 * SizeConfig.widthMultiplier),
+                                      padding: EdgeInsets.only(
+                                          left: 4.44 *
+                                              SizeConfig.widthMultiplier),
                                       width: 41.18 * SizeConfig.widthMultiplier,
-                                      height: 18.75 * SizeConfig.heightMultiplier,
+                                      height:
+                                          18.75 * SizeConfig.heightMultiplier,
                                       child: SingleChildScrollView(
                                         scrollDirection: Axis.vertical,
                                         child: Text(
                                           widget.project.shortDescription,
                                           style: TextStyle(
                                             color: Colours.darkestColor,
-                                            fontSize: 2.19 * SizeConfig.textMultiplier,
+                                            fontSize: 2.19 *
+                                                SizeConfig.textMultiplier,
                                           ),
                                         ),
                                       ),
@@ -139,12 +151,14 @@ class _ProjectCardState extends State<ProjectCard>
                                 ),
                                 Spacer(),
                                 Padding(
-                                  padding:  EdgeInsets.only(
-                                      left: 3.33 * SizeConfig.widthMultiplier, right: 3.33 * SizeConfig.widthMultiplier, top: 1.56 * SizeConfig.heightMultiplier),
+                                  padding: EdgeInsets.only(
+                                      left: 3.33 * SizeConfig.widthMultiplier,
+                                      right: 3.33 * SizeConfig.widthMultiplier,
+                                      top: 1.56 * SizeConfig.heightMultiplier),
                                   child: Image.network(
                                     widget.project.imagePath,
-                                    height: 17.19 *SizeConfig.heightMultiplier,
-                                    width: 33.33* SizeConfig.widthMultiplier,
+                                    height: 17.19 * SizeConfig.heightMultiplier,
+                                    width: 33.33 * SizeConfig.widthMultiplier,
                                     fit: BoxFit.fill,
                                   ),
                                 ),
@@ -194,7 +208,7 @@ class Header extends StatelessWidget {
       child: Container(
         width: 38.24 * SizeConfig.widthMultiplier,
         child: Padding(
-          padding:  EdgeInsets.only(left: 2.22 * SizeConfig.widthMultiplier),
+          padding: EdgeInsets.only(left: 2.22 * SizeConfig.widthMultiplier),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[

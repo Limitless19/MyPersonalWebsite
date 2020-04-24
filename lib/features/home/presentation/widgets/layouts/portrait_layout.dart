@@ -229,7 +229,6 @@ class _ContentState extends State<Content>
     return NotificationListener(
       onNotification: (t) {
         if (t is ScrollUpdateNotification) {
-          print(_scrollController.position.pixels);
           if (_scrollController.position.pixels >=
               (18.15 * SizeConfig.heightMultiplier)) {
             _controller.forward();
@@ -269,7 +268,7 @@ class _ContentState extends State<Content>
             });
           }
           if (_scrollController.position.pixels >=
-              (190.5 * SizeConfig.heightMultiplier)) {
+              (198 * SizeConfig.heightMultiplier)) {
             defaultBloc.defaultSink(true);
           } else {
             defaultBloc.defaultSink(false);
@@ -372,8 +371,8 @@ class _ContentState extends State<Content>
                                 onTap: () {},
                                 text: [
                                   'NodeJs',
-                                  'Django',
-                                  "Android",
+                                  'Android',
+                                  "Ethereum",
                                   "Flutter",
                                 ],
                                 duration: Duration(milliseconds: 14000),
@@ -413,22 +412,26 @@ class _ContentState extends State<Content>
                       SizedBox(height: 1.56 * SizeConfig.heightMultiplier),
                       FadeTransition(
                         opacity: infoAnimation,
-                        child: BackgroundDymanicText(
-                            firstColor: Colours.darkestColor,
-                            secondColor: Colours.lightestColor,
-                            stream: myDescriptionBloc.myDescriptionStream,
-                            text: Strings.about_me_details),
+                        child: Padding(
+                          padding: SizeConfig.isMobilePortrait? const EdgeInsets.only(left: 16,right: 48) : const EdgeInsets.only(left: 32,right: 80),
+                          child: BackgroundDymanicText(
+                              firstColor: Colours.darkestColor,
+                              secondColor: Colours.lightestColor,
+                              stream: myDescriptionBloc.myDescriptionStream,
+                              text: Strings.about_me_details),
+                        ),
                       ),
                       SizedBox(height: 3.56 * SizeConfig.heightMultiplier),
                       SlideTransition(
                         position: picsAnimation,
                         child: ProfilePicture(
+                            imageUrl: Images.profile_pic,
                             radius: 18.75 * SizeConfig.heightMultiplier),
                       ),
                     ],
                   ),
                 ),
-                SizedBox(height: 17.44 * SizeConfig.heightMultiplier),
+                SizedBox(height: 16.44 * SizeConfig.heightMultiplier),
                 Padding(
                   padding:
                       EdgeInsets.only(left: 4.17 * SizeConfig.widthMultiplier),

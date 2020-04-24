@@ -6,9 +6,8 @@ class ProfilePicture extends StatefulWidget {
   final double radius; 
   const ProfilePicture({
     Key key,
-    this.imageUrl =
-        'https://firebasestorage.googleapis.com/v0/b/my-personal-website-28fe2.appspot.com/o/limitlessicon.jpg?alt=media&token=f21dea47-ba61-4d3e-9880-63ad44a8c453',
-        @required this.radius ,
+    this.imageUrl,
+    @required this.radius ,
   }) : super(key: key);
 
   @override
@@ -58,7 +57,8 @@ class _ProfilePictureState extends State<ProfilePicture>
         });
       },
       child: Material(
-      elevation: 5.0,
+      color: Colors.transparent, 
+      elevation: 4.0,
       borderRadius: BorderRadius.all(Radius.circular(_controller.value* (12.5 * SizeConfig.heightMultiplier))),
       child: ClipRRect(
         borderRadius: BorderRadius.all(Radius.circular(_controller.value * (12.5 * SizeConfig.heightMultiplier))),
@@ -66,7 +66,7 @@ class _ProfilePictureState extends State<ProfilePicture>
           widget.imageUrl,
           height: 32.81 * SizeConfig.heightMultiplier,
           width:  58.33 * SizeConfig.widthMultiplier,
-          fit: BoxFit.fitHeight,
+          fit: BoxFit.cover,
         ),
       ),
     ),
